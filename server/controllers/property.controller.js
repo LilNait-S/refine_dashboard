@@ -71,7 +71,7 @@ const createProperty = async (req, res) => {
     session.startTransaction();
     const user = await User.findOne({ email }).session(session);
 
-    if (!user) throw new Error(" User not found");
+    if (!user) throw new Error("User not found");
 
     const photoUrl = await cloudinary.uploader.upload(photo);
 
@@ -120,6 +120,7 @@ const updateProperty = async (req, res) => {
     res.status(500).json({ message: e.message });
   }
 };
+
 const deleteProperty = async (req, res) => {
   try {
     const { id } = req.params;
